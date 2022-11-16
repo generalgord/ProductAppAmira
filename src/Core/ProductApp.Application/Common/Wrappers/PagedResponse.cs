@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace ProductApp.Application.Common.Wrappers
+﻿namespace ProductApp.Application.Common.Wrappers
 {
     public class PagedResponse<T> : ServiceResponse<T>
     {
@@ -24,5 +18,12 @@ namespace ProductApp.Application.Common.Wrappers
             PageNumber = pageNumber;
             PageSize = pageSize;
         }
+
+        public PagedResponse(T value, int pageSize, int pageNumber) : base(value)
+        {
+            PageNumber = pageNumber;
+            PageSize = pageSize;
+        }
+
     }
 }

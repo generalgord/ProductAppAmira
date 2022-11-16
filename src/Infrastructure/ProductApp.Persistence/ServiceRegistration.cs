@@ -18,5 +18,7 @@ public static class ServiceRegistration
     {
         serviceDescriptors.AddDbContext<ApplicationDbContext>(opt => opt.UseInMemoryDatabase("InMemoryDB"));
         serviceDescriptors.AddTransient<IProductRepository, ProductRepository>();
+
+        serviceDescriptors.AddScoped<ApplicationDbContextInitialiser>();
     }
 }

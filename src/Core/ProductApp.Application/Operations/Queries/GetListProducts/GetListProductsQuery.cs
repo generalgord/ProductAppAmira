@@ -1,4 +1,6 @@
-﻿using MediatR;
+﻿using AutoMapper;
+
+using MediatR;
 
 using ProductApp.Application.Common.DTO;
 using ProductApp.Application.Common.Repositories;
@@ -16,17 +18,21 @@ namespace ProductApp.Application.Operations.Queries.GetListProducts
         public class GetListProductsQueryHandler : IRequestHandler<GetListProductsQuery, IList<ProductViewDTO>>
         {
             private readonly IProductRepository productRepository;
+            private readonly IMapper mapper;
 
-            public GetListProductsQueryHandler(IProductRepository productRepository)
+            public GetListProductsQueryHandler(IProductRepository productRepository, IMapper mapper)
             {
                 this.productRepository = productRepository;
+                this.mapper = mapper;
             }
 
             public async Task<IList<ProductViewDTO>> Handle(GetListProductsQuery request, CancellationToken cancellationToken)
             {
                 var list = await productRepository.GetAllAsync();
 
-                return new List<ProductViewDTO>() { };
+                var vm = mapper.Map<IList<ProductViewDTO>>(list);
+
+                return vm;
 
             }
         }

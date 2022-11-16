@@ -18,6 +18,7 @@ namespace ProductApp.Application.Common.Mappings
 
             bool HasInterface(Type type) => type.IsGenericType && type.GetGenericTypeDefinition() == mapFromType;
 
+            var types_1 = assembly.GetExportedTypes().ToList();
             var types = assembly.GetExportedTypes().Where(w => w.GetInterfaces().Any(HasInterface)).ToList();
 
             var argumentTypes = new Type[] { typeof(Profile) };

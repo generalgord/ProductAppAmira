@@ -12,15 +12,15 @@ namespace ProductApp.Infrastructure.Context
 {
     public class ApplicationDbContext : DbContext
     {
+        public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options) : base(options) { }
+
+        protected ApplicationDbContext() { }
+
+
         public DbSet<Product> Products { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            modelBuilder.Entity<Product>().HasData(
-                new Product() { Id = Guid.NewGuid(), Name = "Paper A4", Value = 1, Quantity = 100 },
-                new Product() { Id = Guid.NewGuid(), Name = "Paper A5", Value = 1, Quantity = 200 },
-                new Product() { Id = Guid.NewGuid(), Name = "Math Book", Value = 75, Quantity = 500 }
-            );
             base.OnModelCreating(modelBuilder);
         }
     }
