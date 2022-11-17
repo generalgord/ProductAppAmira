@@ -3,7 +3,9 @@
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
-using ProductApp.Application.Operations.Queries.GetListProducts;
+using ProductApp.Application.Common.Wrappers;
+using ProductApp.Application.Operations.Products.Commands.CreateProduct;
+using ProductApp.Application.Operations.Products.Queries.GetListProducts;
 
 namespace ProductApp.WebApi.Controllers
 {
@@ -18,6 +20,12 @@ namespace ProductApp.WebApi.Controllers
         {
             var query = new GetListProductsQuery();
             return Ok(await Mediator.Send(query));
+        }
+
+        [HttpPost]
+        public async Task<ActionResult<ServiceResponse<Guid>>> Post(CreateProductCommand command)
+        {
+            return await Mediator.Send(command);
         }
 
     }
