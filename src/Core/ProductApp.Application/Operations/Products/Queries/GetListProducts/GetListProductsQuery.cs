@@ -10,7 +10,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ProductApp.Application.Operations.Queries.GetListProducts
+namespace ProductApp.Application.Operations.Products.Queries.GetListProducts
 {
     public class GetListProductsQuery : IRequest<IList<ProductViewDTO>>
     {
