@@ -1,8 +1,7 @@
 ﻿using AutoMapper;
 
 using MediatR;
-
-using ProductApp.Application.Common.DTO;
+using ProductApp.Application.Common.DTO.Products;
 using ProductApp.Application.Common.Repositories;
 
 using System;
