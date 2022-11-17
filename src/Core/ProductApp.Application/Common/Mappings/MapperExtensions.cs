@@ -21,7 +21,7 @@ namespace ProductApp.Application.Common.Mappings
             return PaginatedList<TDestination>.CreateAsync(queryable.AsNoTracking(), pageNumber, pageSize);
         }
 
-        public static Task<List<TDestination>> ProjectToListAsync<TDestination>(this IQueryable<TDestination> queryable, IConfigurationProvider configuration)
+        public static Task<List<TDestination>> ProjectToListAsync<TDestination>(this IQueryable queryable, IConfigurationProvider configuration)
             where TDestination : class
         {
             return queryable.ProjectTo<TDestination>(configuration).AsNoTracking().ToListAsync();
