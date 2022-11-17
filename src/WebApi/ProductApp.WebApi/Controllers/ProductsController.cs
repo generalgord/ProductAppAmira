@@ -7,8 +7,6 @@ using ProductApp.Application.Operations.Queries.GetListProducts;
 
 namespace ProductApp.WebApi.Controllers
 {
-    [Route("api/[controller]")]
-    [ApiController]
     public class ProductsController : ApiControllerBase
     {
         public ProductsController(IHttpContextAccessor contextAccessor) : base(contextAccessor)
