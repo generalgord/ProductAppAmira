@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 using ProductApp.Application.Common.Wrappers;
 using ProductApp.Application.Operations.Products.Commands.CreateProduct;
 using ProductApp.Application.Operations.Products.Queries.GetListProducts;
+using ProductApp.Application.Operations.Products.Queries.GetProductById;
 
 namespace ProductApp.WebApi.Controllers
 {
@@ -26,6 +27,13 @@ namespace ProductApp.WebApi.Controllers
         public async Task<ActionResult<ServiceResponse<Guid>>> Post(CreateProductCommand command)
         {
             return await Mediator.Send(command);
+        }
+
+        [HttpGet("{id}")]
+        public async Task<IActionResult> GetById(Guid id)
+        {
+            var query = new GetProductByIdQuery() { Id = id };
+            return Ok(await Mediator.Send(query));
         }
 
     }
